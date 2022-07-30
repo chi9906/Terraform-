@@ -25,7 +25,9 @@ each.value]
 tags = {
     Name      = each.key
     Terraform = "true"
-} }
+}
+}
+
 #Deploy the public subnets
 resource "aws_subnet" "public_subnets" {
 for_each    = var.public_subnetsvpc_id
@@ -39,7 +41,8 @@ Terraform = "true"
   }
 }
 
-#Create route tables for public and private subnets resource "aws_route_table" "public_route_table" {
+#Create route tables for public and private subnets
+resource "aws_route_table" "public_route_table" {
 vpc_id = aws_vpc.vpc.id
 route {
   cidr_block     = "0.0.0.0/0"
